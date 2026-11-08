@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Contracts\CepRepository;
 
 class CepController extends Controller
@@ -14,7 +13,7 @@ class CepController extends Controller
     public function show(string $cep)
     {
         $cep = preg_replace('/\D/', '', $cep);
-        
+
         if(!preg_match('/^\d{8}$/', $cep)) {
             return response()->json(['error' => 'CEP inválido'], 422);
         }
